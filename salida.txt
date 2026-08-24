@@ -1,0 +1,82 @@
+>>> EJECUTANDO PRUEBAS AUTOMÁTICAS CON LOS CASOS LÍMITE <<<
+
+============================================================
+ ANALIZANDO NÚMERO DECIMAL: 127
+============================================================
+• Binario:     0b1111111
+• Octal:       0o177
+• Hexadecimal: 0x7F
+
+--- Representación en Complemento a Dos ---
+•  8 bits: 01111111
+• 16 bits: 0000000001111111
+• 32 bits: 00000000000000000000000001111111
+
+--- Verificación de Overflow (8 bits con signo) ---
+✓ El número está DENTRO del rango (-128 a 127). NO produce overflow.
+
+
+============================================================
+ ANALIZANDO NÚMERO DECIMAL: 128
+============================================================
+• Binario:     0b10000000
+• Octal:       0o200
+• Hexadecimal: 0x80
+
+--- Representación en Complemento a Dos ---
+•  8 bits: No aplica (Overflow / Fuera de rango)
+• 16 bits: 0000000010000000
+• 32 bits: 00000000000000000000000010000000
+
+--- Verificación de Overflow (8 bits con signo) ---
+✗ ¡ALERTA! El número PRODUCE OVERFLOW en 8 bits con signo.
+
+
+============================================================
+ ANALIZANDO NÚMERO DECIMAL: -128
+============================================================
+• Binario:     -0b10000000
+• Octal:       -0o200
+• Hexadecimal: -0x80
+
+--- Representación en Complemento a Dos ---
+•  8 bits: 10000000
+• 16 bits: 1111111110000000
+• 32 bits: 11111111111111111111111110000000
+
+--- Verificación de Overflow (8 bits con signo) ---
+✓ El número está DENTRO del rango (-128 a 127). NO produce overflow.
+
+
+============================================================
+ ANALIZANDO NÚMERO DECIMAL: -129
+============================================================
+• Binario:     -0b10000001
+• Octal:       -0o201
+• Hexadecimal: -0x81
+
+--- Representación en Complemento a Dos ---
+•  8 bits: No aplica (Overflow / Fuera de rango)
+• 16 bits: 1111111101111111
+• 32 bits: 11111111111111111111111101111111
+
+--- Verificación de Overflow (8 bits con signo) ---
+✗ ¡ALERTA! El número PRODUCE OVERFLOW en 8 bits con signo.
+
+
+============================================================
+ ANALIZANDO NÚMERO DECIMAL: 0
+============================================================
+• Binario:     0b0
+• Octal:       0o0
+• Hexadecimal: 0x0
+
+--- Representación en Complemento a Dos ---
+•  8 bits: 00000000
+• 16 bits: 0000000000000000
+• 32 bits: 00000000000000000000000000000000
+
+--- Verificación de Overflow (8 bits con signo) ---
+✓ El número está DENTRO del rango (-128 a 127). NO produce overflow.
+
+

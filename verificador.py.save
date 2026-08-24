@@ -1,0 +1,56 @@
+import sys
+
+def complemento_a_dos(numero, bits):
+    min_val = -(1 << (bits - 1))
+    max_val = (1 << (bits - 1)) - 1
+    
+    if min_val <= numero <= max_val:
+        val_unsigned = numero & ((1 << bits) - 1)
+        return f"{val_unsigned:0{bits}b}"
+    else:
+        return "No aplica (Overflow / Fuera de rango)"
+
+def analizar_numero(num):
+    print("=" * 60)
+    print(f" ANALIZANDO NÚMERO DECIMAL: {num}")
+    print("=" * 60)
+    
+    if num >= 0:
+        print(f"• Binario:     0b{bin(num)[2:]}")
+        print(f"• Octal:       0o{oct(num)[2:]}")
+        print(f"• Hexadecimal: 0x{hex(num)[2:].upper()}")
+    else:
+        print(f"• Binario:     -0b{bin(abs(num))[2:]}")
+        print(f"• Octal:       -0o{oct(abs(num))[2:]}")
+        print(f"• Hexadecimal: -0x{hex(abs(num))[2:].upper()}")
+        
+    print("\n--- Representación en Complemento a Dos ---")
+    print(f"•  8 bits: {complemento_a_dos(num, 8)}")
+    print(f"• 16 bits: {complemento_a_dos(num, 16)}")
+    print(f"• 32 bits: {complemento_a_dos(num, 32)}")
+    
+    print("\n--- Verificación de Overflow (8 bits con signo) ---")
+    if -128 <= num <= 127:
+        print("✓ El número está DENTRO del rango (-128 a 127). NO produce overflow.")
+    else:
+        print("✗ ¡ALERTA! El número PRODUCE OVERFLOW en 8 bits con signo.")
+    print("\n")
+
+def main():
+    if len(sys.argv) > 1:
+        try:
+            num = int(sys.argv[1])
+            analizar_numero(num)
+        except ValueError:
+            print("Error: Ingrese un entero válido.")
+    else:
+        print(">>> EJECUTANDO PRUEBAS AUTOMÁTICAS CON LOS CASOS LÍMITE <<<\n")
+        casos = [127, 128, -128, -129, 0]
+        for caso in casos:
+            analizar_numero(caso)
+
+if __name__ == "__main__":
+    main()
+
+python3 verificador.py
+
