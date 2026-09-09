@@ -1,0 +1,26 @@
+Estructura del Boceto y Asignación de Componentes
+El diseño se encuentra dividido en zonas funcionales dentro de la cuadrícula de la hoja de cálculo:
+🔵 Zona Azul (Unidad de Control):
+Contador de Programa (C.P.): Celda asignada para almacenar la dirección actual (6).
+Registro de Instrucción (R.I.): Celda receptora de la instrucción decodificada.
+⚪ Zona Gris (Memoria Central y Buses):
+Registro de Dirección de Memoria (RDM): Encapsula la dirección proveniente del C.P.
+Registro de Intercambio de Memoria (RIM): Almacena temporalmente el dato extraído.
+Tabla RAM: Matriz estructurada de direcciones (1 a 6) donde se aloja el valor operativo (1123).
+⚙️ Lógica de Transmisión (Boceto de Flujo de Datos)
+El esquema conceptual define la ruta de ejecución de los 5 pasos clásicos de búsqueda:
+RDM <- C.P. : Transferencia de la dirección del contador al bus de direcciones.
+RIM <- M(RDM) : Acceso de lectura sobre la Memoria Central RAM.
+R.I. <- RIM : Carga de la instrucción hacia el decodificador de control.
+Decodificación : Interpretación de la señal para la unidad de procesamiento.
+C.P. <- C.P. + 1 : Incremento secuencial del apuntador de programa.
+🎮 Investigación: ¿Cómo se aplica esto y en qué juegos se utiliza?
+La arquitectura de registros, memoria RAM y el ciclo de instrucción (Fetch-Decode-Execute) que plasma este boceto no es solo teoría de hardware; es la base de cómo funcionan todos los sistemas interactivos y se aplica directamente en el mundo de los videojuegos de dos formas:
+1. ¿Cómo se aplica en el desarrollo de videojuegos (Detrás de escena)?
+Gestión del Loop del Juego (Game Loop): El ciclo de búsqueda que dibujaste en el boceto ocurre millones de veces por segundo en la consola o PC mientras juegas. Cada fotograma (frame) de un juego pasa por una fase idéntica: Busca la entrada del control, Decodifica qué botón presionaste, la ALU calcula las nuevas coordenadas (ej. sumar velocidad a la posición del personaje) y el resultado se guarda en la Memoria RAM para dibujarlo en pantalla.
+Máquinas de Estados y Scripting: Los motores de juegos (como Unity o Unreal) simulan este comportamiento mediante "Contadores de Programa" internos para ejecutar scripts de Inteligencia Artificial o líneas de diálogo de manera secuencial.
+2. ¿En qué juegos específicos se aplica o se enseña esto?
+Existen videojuegos diseñados específicamente para que el jugador construya y manipule este tipo de arquitecturas (registros, ALU y memoria RAM):
+Turing Complete: Un juego de puzzle de ingeniería donde construyes un ordenador desde cero, conectando compuertas lógicas, creando tu propia ALU, registros de memoria y programando en lenguaje ensamblador.
+Shenzhen I/O y TIS-100: Títulos de programación y optimización de hardware donde manejas pequeños microcontroladores, registros de datos y memoria RAM limitada para resolver retos de ingeniería.
+Minecraft (con Redstone): Permite a los jugadores aplicar este boceto físicamente en un entorno virtual, construyendo memorias RAM mecánicas, contadores de programa y sumadores lógicos utilizando bloques de circuitería.
