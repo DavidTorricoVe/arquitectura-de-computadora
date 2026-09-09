@@ -1,0 +1,51 @@
+Imagen 1: cat /proc/meminfo
+Comando: cat /proc/meminfo
+Función: Lee el pseudofichero virtual del kernel para reportar el estado de la memoria RAM en kilobytes (kB).
+Valores clave:
+MemTotal: 1944244 kB (~1.9 GB de memoria física total asignada).
+MemFree: 66124 kB (Memoria sin uso inmediato).
+MemAvailable: 714392 kB (Memoria estimada disponible para arrancar nuevos procesos sin necesidad de paginar en Swap).
+Buffers y Cached: 16 MB y 741 MB dedicados a caché de disco en memoria.
+SwapTotal: 6189052 kB (~5.9 GB de espacio de intercambio en disco).
+Imagen 2: free -h
+Comando: free -h
+Función: Genera un resumen simplificado de la memoria física y swap utilizando unidades legibles por humanos (Gibibytes / Mebibytes).
+Valores clave:
+Mem (RAM): Total de 1.9Gi, donde 1.0Gi está en uso (used), 64Mi libre (free), 797Mi en buff/cache, y 685Mi disponibles (available).
+Swap: Total de 5.9Gi, con apenas 109Mi en uso y 5.8Gi libres.
+Imagen 3: lscpu (Parte 1: Especificaciones del Procesador)
+Comando: lscpu
+Función: Inspecciona la arquitectura del procesador y el conjunto de instrucciones disponible.
+Valores clave:
+Architecture: x86_64: Procesador de 64 bits.
+Byte Order: Little Endian: Ordenamiento donde el byte menos significativo se almacena en la dirección de memoria más baja.
+CPU(s): 1: 1 único hilo/núcleo virtual asignado a esta máquina.
+Model name: Intel(R) Core(TM) i5-1038NG7 CPU @ 2.00GHz.
+Flags: Conjunto de microinstrucciones soportadas por el CPU (SSE, AVX, AVX2, AVX-512).
+Imagen 4: lscpu (Parte 2: Cachés y Virtualización)
+Comando: Continuación de la salida de lscpu.
+Función: Muestra la jerarquía de memoria caché asignada y el entorno de hipervisor.
+Valores clave:
+Hypervisor vendor: VMware (Virtualización de tipo completa).
+Jerarquía de Cachés:
+L1d (Datos): 48 KiB
+L1i (Instrucciones): 32 KiB
+L2: 512 KiB
+L3: 6 MiB (Caché compartida)
+Vulnerabilities: Mitigaciones aplicadas por el kernel frente a fallos de hardware tipo Spectre y Meltdown.
+Imagen 5: sudo dmidecode -t processor (Registro del Socket Activo)
+Comando: sudo dmidecode -t processor
+Función: Consulta la tabla DMI / SMBIOS del procesador activo expuesta al sistema.
+Valores clave:
+Socket Designation: CPU #000
+Status: Populated, Enabled (El procesador está físicamente presente y activo).
+Current Speed: 2000 MHz (Frecuencia base de operación a 2.00 GHz).
+L1 Cache Handle: 0x0094 y L2 Cache Handle: 0x0114.
+Core Count: 1 / Core Enabled: 1.
+Imagen 6: sudo dmidecode -t processor (Registro de Socket Virtual Adicional)
+Comando: Bloque complementario de la salida de dmidecode.
+Función: Entrada DMI correspondiente al slot secundario configurado por el hipervisor.
+Valores clave:
+Socket Designation: CPU #127
+Status: Populated, Disabled By BIOS (Indica una ranura virtual mapeada pero deshabilitada en la configuración de arranque de la máquina virtual).
+Voltage: 3.3 V.
